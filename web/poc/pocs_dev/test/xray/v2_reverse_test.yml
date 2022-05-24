@@ -1,0 +1,20 @@
+name: poc-yaml-xray-revese-test
+transport: http
+set:
+  reverse: newReverse()
+  reverseURL: reverse.url
+rules:
+    r1:
+        request:
+            method: GET
+            path: "/ssrf.php?url={{reverseURL}}"
+        expression: |
+            response.status == 200 && reverse.wait(5)
+expression:
+    r1()
+# 信息部分
+detail:
+    author: name(link)
+    links: 
+        - http://example.com
+    tags: test

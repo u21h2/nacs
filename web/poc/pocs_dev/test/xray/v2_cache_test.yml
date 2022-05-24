@@ -1,0 +1,38 @@
+name: poc-yaml-example-com
+transport: http
+rules:
+  r1:
+    request:
+      cache: true
+      method: GET
+      path: /index.html
+      headers: {}
+      body: ""
+      follow_redirects: false
+    expression: |
+      response.status==200 && response.body.bcontains(b'Example Domain')
+  r2:
+    request:
+      cache: true
+      method: GET
+      path: /index.html
+      headers: {}
+      body: ""
+      follow_redirects: false
+    expression: |
+      response.status==200 && response.body.bcontains(b'Example Domain')
+expression: r1() && r2()
+detail:
+  author: name(link)
+  links:
+  - http://example.com
+  fingerprint:
+    infos: []
+    host_info:
+      hostname: ""
+  vulnerability:
+    id: ""
+    match: ""
+  description: ""
+  version: ""
+  tags: test, test2

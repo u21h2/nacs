@@ -1,0 +1,35 @@
+name: poc-yaml-tcp-example
+transport: tcp
+rules:
+  r1:
+    request:
+      cache: true
+      content: "hello world"
+      read_timeout: "10"
+      connection_id: c1
+    expression: |
+      response.raw.bcontains(b'hello world')
+  r2:
+    request:
+      cache: true
+      content: "hello world"
+      read_timeout: "10"
+      connection_id: c1
+    expression: |
+      response.raw.bcontains(b'hello world')
+
+expression: r1() && r2()
+detail:
+  author: name(link)
+  links:
+  - http://example.com
+  fingerprint:
+    infos: []
+    host_info:
+      hostname: ""
+  vulnerability:
+    id: ""
+    match: ""
+  description: ""
+  version: ""
+  tags: test

@@ -1,0 +1,22 @@
+id: poc-yaml-nuclei-test-example-com
+info:
+  name: poc-yaml-nuclei-test-example-com
+  author:
+  - longlone
+  tags: test
+  description: None
+  severity: info
+requests:
+- matchers:
+  - type: status
+    part: body
+    status:
+    - 200
+  - type: word
+    part: body
+    words:
+    - Example Domain
+  matchers-condition: and
+  path:
+  - '{{BaseURL}}/index.html'
+  method: GET

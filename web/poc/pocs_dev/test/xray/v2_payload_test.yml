@@ -1,0 +1,39 @@
+name: poc-yaml-example-com
+transport: http
+set:
+  PATH: r"index"
+payloads:
+  continue: true
+  payloads:
+    s1:
+      PATH2: PATH + r".html"
+    s2:
+      PATH2: r""
+rules:
+  r1:
+    request:
+      cache: false
+      method: GET
+      path: /{{PATH2}}
+      headers: {}
+      body: ""
+      follow_redirects: false
+    expression: |
+      response.status==200 && response.body.bcontains(b'Example Domain')
+    output:
+      raw: request.raw
+expression: r1()
+detail:
+  author: name(link)
+  links:
+  - http://example.com
+  fingerprint:
+    infos: []
+    host_info:
+      hostname: ""
+  vulnerability:
+    id: ""
+    match: ""
+  description: ""
+  version: ""
+  tags: test, test2
