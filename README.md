@@ -31,7 +31,7 @@
 ```
 常用参数
 ```shell
--np 不探活
+-np 不探活, 直接扫端口
 -xraypocpath xray(v1)的poc路径 格式为"web/pocs/"
 -nucleipocpath nuclei的poc路径 格式为"xxx/pocs/**"
 -nopoc 不进行poc探测, 包括xray与nuclei
@@ -43,7 +43,7 @@
 -passwordadd 爆破时添加密码
 ```
 
-# 他山之石
+# 借鉴
 - [x] fscan https://github.com/shadow1ng/fscan 专注于内网 web和服务的poc 服务的爆破
 - [x] kscan https://github.com/lcvvvv/kscan 专注于信息收集 能探测到非常规端口开的服务 比如2222的ssh
 - [x] dismap https://github.com/zhzyker/dismap 资产收集
