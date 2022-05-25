@@ -28,8 +28,9 @@
 ```shell
 ./nacs -h IP或IP段
 ./nacs -hf IP或IP段的文件
-./nacs -hf ip.txt -nonuclei -nobrute > output.txt
-./nacs -hf ip.txt -nonuclei -nobrute | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" > output.txt 输出功能没实现 先这样重定向一下
+输出功能没实现 先这样重定向一下
+./nacs -hf ip.txt -nonuclei -nobrute > output_withcolor.txt
+cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" > output_withoutcolor.txt
 ```
 常用参数
 ```shell
