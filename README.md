@@ -64,6 +64,7 @@ cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" 
 - [x] pocassist https://github.com/jweny/pocassist 可视化编辑导入和运行
 - [ ] Aopo https://github.com/ExpLangcn/Aopo
 - [x] SpringExploit https://github.com/SummerSec/SpringExploit
+- [ ] fscanpoc补充 https://github.com/chaosec2021/fscan-POC
 
 # TODO
 - [ ] 支持xrayV2, 本来想参考pocV, 不过不太稳定, 暂时先用fscan的v1版本
