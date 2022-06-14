@@ -83,7 +83,7 @@ func SshConn(Host, Port, user, pass string) (flag bool, err error) {
 			var result string
 			if common.RunningInfo.Command != "" {
 				combo, _ := session.CombinedOutput(common.RunningInfo.Command)
-				result = fmt.Sprintf("SSH:%v:%v:%v %v \n %v", Host, Port, Username, Password, string(combo))
+				result = fmt.Sprintf("SSH:%v:%v %v %v `%v`: %v", Host, Port, Username, Password, common.RunningInfo.Command, strings.Replace(string(combo), "\n", "", 1))
 				if common.RunningInfo.SSHKey != "" {
 					result = fmt.Sprintf("SSH:%v:%v sshkey correct \n %v", Host, Port, string(combo))
 				}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"nacs/common"
 	"nacs/utils"
+	"nacs/utils/logger"
 	"strings"
 )
 
@@ -18,29 +19,40 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 	RunningInfo.NoSave = InputInfo.NoSave
 	RunningInfo.LogLevel = InputInfo.LogLevel
 
-	var err error
-	RunningInfo.Hosts, err = ParseIP(InputInfo.Host, InputInfo.HostFile, InputInfo.SkipHost)
-	if err != nil {
-		fmt.Println("len(hosts)==0", err)
-		return
-	}
-	RunningInfo.NoProbe = InputInfo.NoProbe
-
-	if InputInfo.PortsOnly != "" {
-		common.RunningInfo.Ports = OnlyPorts(InputInfo.PortsOnly)
-	} else if InputInfo.PortsAdd != "" {
-		common.RunningInfo.Ports = AddPorts(InputInfo.PortsAdd)
+	if InputInfo.DirectUrl != "" || InputInfo.DirectUrlFile != "" {
+		logger.Info("Only use provided urls")
+		RunningInfo.DirectUrls = ParseUrl(InputInfo.DirectUrl, InputInfo.DirectUrlFile)
+		//common.DiscoverResults = ProcessUrl(RunningInfo.DirectUrls)
+		//logger.Info("Load " + strconv.Itoa(len(common.DiscoverResults)) + " Urls")
+		RunningInfo.NoProbe = true
+		RunningInfo.DirectUse = true
 	} else {
-		common.RunningInfo.Ports = common.DefaultPorts
-	}
+		var err error
+		RunningInfo.Hosts, err = ParseIP(InputInfo.Host, InputInfo.HostFile, InputInfo.SkipHost)
+		if err != nil {
+			fmt.Println("len(hosts)==0", err)
+			return
+		}
+		RunningInfo.NoProbe = InputInfo.NoProbe
 
+		if InputInfo.PortsOnly != "" {
+			RunningInfo.Ports = OnlyPorts(InputInfo.PortsOnly)
+		} else if InputInfo.PortsAdd != "" {
+			RunningInfo.Ports = AddPorts(InputInfo.PortsAdd)
+		} else {
+			RunningInfo.Ports = common.DefaultPorts
+		}
+
+		RunningInfo.DiscoverMode = InputInfo.DiscoverMode
+		RunningInfo.DiscoverType = InputInfo.DiscoverType
+		
+		RunningInfo.DirectUse = false
+	}
+	RunningInfo.DiscoverTimeout = InputInfo.Timeout
 	RunningInfo.Thread = InputInfo.Thread
 
 	ProxyParse()
 
-	RunningInfo.DiscoverTimeout = InputInfo.Timeout
-	RunningInfo.DiscoverMode = InputInfo.DiscoverMode
-	RunningInfo.DiscoverType = InputInfo.DiscoverType
 	RunningInfo.OutJson = InputInfo.OutJson
 
 	ParseReversePlatform(InputInfo.CeyeKey, InputInfo.CeyeDomain)

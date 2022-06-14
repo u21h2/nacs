@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var version = "0.0.1"
+var version = "0.0.2"
 
 type InputInfoStruct struct {
 	Host           string
@@ -58,6 +58,9 @@ type InputInfoStruct struct {
 	BruteSocks5Proxy string
 	RedisFile        string
 	RedisShell       string
+
+	DirectUrl     string
+	DirectUrlFile string
 }
 type FileInfoStruct struct {
 }
@@ -115,6 +118,10 @@ type RunningInfoStruct struct {
 	BruteSocks5Proxy string
 	RedisFile        string
 	RedisShell       string
+
+	DirectUse       bool
+	DirectUrls      []map[string]interface{}
+	DirectUrlsCache []string
 }
 
 var InputInfo InputInfoStruct

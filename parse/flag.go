@@ -53,12 +53,15 @@ func Flag(Info *common.InputInfoStruct) {
 	flag.IntVar(&Info.BruteTimeout, "brutetimeout", 1, "brute timeout time, the default is 1 seconds")
 	flag.StringVar(&Info.BruteSocks5Proxy, "bruteproxy", "", "brute proxy")
 	flag.IntVar(&Info.BruteThread, "brutethread", 10, "brute thread")
-	flag.StringVar(&Info.UsernameAdd, "usernameadd", "", "username add: split by ,")
-	flag.StringVar(&Info.PasswordAdd, "passwordadd", "", "password add: split by ,")
+	flag.StringVar(&Info.UsernameAdd, "usernameadd", "", "username add: split by [,]")
+	flag.StringVar(&Info.PasswordAdd, "passwordadd", "", "password add: split by [,]")
 
 	flag.StringVar(&Info.RedisFile, "redisfile", "id_rsa.pub", "redis file to write sshkey file (as: -rf id_rsa.pub) ")
 	// redis反弹shell的目标
 	flag.StringVar(&Info.RedisShell, "redishell", "", "redis shell to write cron file (as: -rs 192.168.1.1:6666) ")
+
+	flag.StringVar(&Info.DirectUrl, "u", "", "url split by [,] i.e., http(s), ssh, ftp, ...")
+	flag.StringVar(&Info.DirectUrlFile, "uf", "", "url file")
 
 	flag.Parse()
 }
