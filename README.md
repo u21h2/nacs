@@ -1,9 +1,8 @@
 # nacs
 全功能内网扫描器
-<p align="center">
 <img src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod">
 <a href="https://github.com/u2h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total">
-</p>
+
 
 # 功能
 - 探活
@@ -84,3 +83,6 @@ cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" 
 - [ ] ... 
 
 三五天写出来的, 肯定存在大量bug, 但目前基本使用是没问题的, 师傅们多多提建议!
+    
+# Stargazers over time
+[![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)
