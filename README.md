@@ -1,5 +1,9 @@
 # nacs
 全功能内网扫描器
+<p align="center">
+<img src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod">
+<a href="https://github.com/u2h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total">
+</p>
 
 # 功能
 - 探活
