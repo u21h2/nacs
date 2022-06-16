@@ -62,6 +62,7 @@ func Flag(Info *common.InputInfoStruct) {
 
 	flag.StringVar(&Info.DirectUrl, "u", "", "url split by [,] i.e., http(s), ssh, ftp, ...")
 	flag.StringVar(&Info.DirectUrlFile, "uf", "", "url file")
+	flag.BoolVar(&Info.DirectUrlForce, "uforce", false, "always exploit")
 
 	flag.Parse()
 }

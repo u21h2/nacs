@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -83,4 +84,57 @@ func CheckErrs(err error) bool {
 		}
 	}
 	return false
+}
+
+// CompareTwoUrlEqual 比较是否相同
+func CompareTwoUrlEqual(url1, url2 string) bool {
+	if strings.EqualFold(url1, url2) {
+		return true
+	}
+	parsedUrl1, _ := url.Parse(url1)
+	schema1 := parsedUrl1.Scheme
+	host1 := parsedUrl1.Host
+	if strings.Contains(host1, ":") {
+		host1 = strings.Split(host1, ":")[0]
+	}
+	port1 := parsedUrl1.Port()
+	if port1 == "" {
+		if schema1 == "http" {
+			port1 = "80"
+		} else if schema1 == "https" {
+			port1 = "443"
+		}
+	}
+	path1 := parsedUrl1.Path
+	parsedUrl2, _ := url.Parse(url2)
+	schema2 := parsedUrl2.Scheme
+	host2 := parsedUrl2.Host
+	if strings.Contains(host2, ":") {
+		host2 = strings.Split(host2, ":")[0]
+	}
+	port2 := parsedUrl2.Port()
+	if port2 == "" {
+		if schema2 == "http" {
+			port2 = "80"
+		} else if schema2 == "https" {
+			port2 = "443"
+		}
+	}
+	path2 := parsedUrl2.Path
+	//fmt.Println(schema1, host1, port1, path1)
+	//fmt.Println(schema2, host2, port2, path2)
+	if !strings.EqualFold(schema1, schema2) {
+		return false
+	} else if !strings.EqualFold(host1, host2) {
+		return false
+	} else if !strings.EqualFold(port1, port2) {
+		return false
+	} else if !strings.EqualFold(path1, path2) {
+		if strings.EqualFold(path1[:len(path1)], path2) || strings.EqualFold(path1, path2[:len(path2)]) {
+			return true
+		} else {
+			return false
+		}
+	}
+	return true
 }

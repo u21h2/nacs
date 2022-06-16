@@ -4,6 +4,7 @@ import (
 	"nacs/common"
 	"nacs/discover/parse"
 	"nacs/discover/protocol"
+	"nacs/utils"
 	"nacs/utils/logger"
 	"strconv"
 	"strings"
@@ -30,6 +31,7 @@ func Discover() {
 
 	if common.RunningInfo.DirectUse {
 		for _, DirectUrl := range common.RunningInfo.DirectUrls {
+			//fmt.Println(DirectUrl)
 			schema := DirectUrl["schema"].(string)
 			host := DirectUrl["host"].(string)
 			port := DirectUrl["port"].(int)
@@ -46,8 +48,30 @@ func Discover() {
 					if strings.Contains(res["uri"].(string), "://") {
 						intIde++
 					}
-				}
-				if res["uri"] != url {
+					// true -> equal
+					//fmt.Println(utils.CompareTwoUrlEqual(res["uri"].(string), url))
+					if !utils.CompareTwoUrlEqual(res["uri"].(string), url) {
+						intAll++
+						directRes := map[string]interface{}{
+							"status":          "None",
+							"banner.byte":     "None",
+							"banner.string":   "None",
+							"protocol":        schema,
+							"type":            "None",
+							"host":            host,
+							"port":            port,
+							"uri":             url,
+							"note":            "None",
+							"path":            "",
+							"identify.bool":   false,
+							"identify.string": "None",
+						}
+						common.DiscoverResults = append(common.DiscoverResults, directRes)
+						if strings.Contains(res["uri"].(string), "://") {
+							intIde++
+						}
+					}
+				} else if common.RunningInfo.DirectUrlForce {
 					intAll++
 					directRes := map[string]interface{}{
 						"status":          "None",

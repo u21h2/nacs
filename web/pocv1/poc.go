@@ -29,6 +29,7 @@ func Poc() {
 	for _, discoverResult := range common.DiscoverResults {
 		if discoverResult["protocol"].(string) == "http" || discoverResult["protocol"].(string) == "https" {
 			url := discoverResult["uri"].(string)
+			//fmt.Println(url)
 			RunPoc(url)
 		}
 	}

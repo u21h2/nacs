@@ -5,6 +5,7 @@ import (
 	"nacs/common"
 	"nacs/utils"
 	"nacs/utils/logger"
+	"strconv"
 	"strings"
 )
 
@@ -22,10 +23,13 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 	if InputInfo.DirectUrl != "" || InputInfo.DirectUrlFile != "" {
 		logger.Info("Only use provided urls")
 		RunningInfo.DirectUrls = ParseUrl(InputInfo.DirectUrl, InputInfo.DirectUrlFile)
-		//common.DiscoverResults = ProcessUrl(RunningInfo.DirectUrls)
-		//logger.Info("Load " + strconv.Itoa(len(common.DiscoverResults)) + " Urls")
+		//for _, info := range RunningInfo.DirectUrls {
+		//	fmt.Println(info)
+		//}
+		logger.Info("Load " + strconv.Itoa(len(RunningInfo.DirectUrls)) + " Urls")
 		RunningInfo.NoProbe = true
 		RunningInfo.DirectUse = true
+		RunningInfo.DirectUrlForce = InputInfo.DirectUrlForce
 	} else {
 		var err error
 		RunningInfo.Hosts, err = ParseIP(InputInfo.Host, InputInfo.HostFile, InputInfo.SkipHost)
@@ -45,7 +49,7 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 
 		RunningInfo.DiscoverMode = InputInfo.DiscoverMode
 		RunningInfo.DiscoverType = InputInfo.DiscoverType
-		
+
 		RunningInfo.DirectUse = false
 	}
 	RunningInfo.DiscoverTimeout = InputInfo.Timeout

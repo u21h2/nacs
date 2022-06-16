@@ -85,10 +85,12 @@ func Readurlfile(filename string) ([]string, error) {
 }
 
 func ParseUrls(urls string) (DirectUrls []string) {
-	if strings.Contains(urls, ",") {
-		DirectUrls = strings.Split(urls, ",")
-	} else {
-		DirectUrls = append(DirectUrls, urls)
+	if urls != "" {
+		if strings.Contains(urls, ",") {
+			DirectUrls = strings.Split(urls, ",")
+		} else {
+			DirectUrls = append(DirectUrls, urls)
+		}
 	}
 	return
 }
