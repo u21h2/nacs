@@ -51,6 +51,7 @@ cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" 
 ```
 
 # 借鉴
+借鉴参考了下列优秀作品
 - [x] fscan https://github.com/shadow1ng/fscan 专注于内网 web和服务的poc 服务的爆破
 - [x] kscan https://github.com/lcvvvv/kscan 专注于信息收集 能探测到非常规端口开的服务 比如2222的ssh
 - [x] dismap https://github.com/zhzyker/dismap 资产收集
