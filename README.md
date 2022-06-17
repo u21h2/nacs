@@ -71,11 +71,13 @@ cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" 
 - [x] SpringExploit https://github.com/SummerSec/SpringExploit
 - [ ] fscanpoc补充 https://github.com/chaosec2021/fscan-POC
 
-# TODO
+# TODO 动态更新
+- [ ] 双语readme
 - [x] 支持-u命令来支持扫描需要url才能访问的资产,不仅支持HTTP(S),同时支持SSH等
-- [ ] 完善日志输出功能(目前几乎没实现输出到文件的功能)
+- [x] 完善日志输出功能(目前几乎没实现输出到文件的功能)
 - [ ] 从fofa中自动扫描搜集资产补充到扫描结果
 - [ ] 支持自定义header来进行host碰撞等
+- [ ] 完善代理功能
 - [ ] 加进度条
 - [ ] 支持xrayV2, 本来想参考pocV, 不过不太稳定, 暂时先用fscan的v1版本
 - [ ] 弱口令自动生成, 根据前缀、后缀、已获得信息等来动态补充爆破的字典

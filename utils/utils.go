@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"nacs/common"
 	"net/url"
 	"os"
 	"os/exec"
@@ -99,11 +100,7 @@ func CompareTwoUrlEqual(url1, url2 string) bool {
 	}
 	port1 := parsedUrl1.Port()
 	if port1 == "" {
-		if schema1 == "http" {
-			port1 = "80"
-		} else if schema1 == "https" {
-			port1 = "443"
-		}
+		port1 = common.ServiceToPortString[schema1]
 	}
 	path1 := parsedUrl1.Path
 	parsedUrl2, _ := url.Parse(url2)
@@ -114,11 +111,7 @@ func CompareTwoUrlEqual(url1, url2 string) bool {
 	}
 	port2 := parsedUrl2.Port()
 	if port2 == "" {
-		if schema2 == "http" {
-			port2 = "80"
-		} else if schema2 == "https" {
-			port2 = "443"
-		}
+		port2 = common.ServiceToPortString[schema2]
 	}
 	path2 := parsedUrl2.Path
 	//fmt.Println(schema1, host1, port1, path1)

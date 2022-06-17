@@ -3,6 +3,7 @@ package parse
 import (
 	"bufio"
 	"fmt"
+	"nacs/common"
 	"nacs/utils"
 	"net/url"
 	"os"
@@ -13,7 +14,15 @@ import (
 func ProcessUrlToDiscover(DirectUrls []string) []map[string]interface{} {
 	var ForDiscoverResults = make([]map[string]interface{}, 0)
 	for _, DirectUrl := range DirectUrls {
-		parsedUrl, _ := url.Parse(DirectUrl)
+		parsedUrl, err := url.Parse(DirectUrl)
+
+		if err != nil {
+			DirectUrl = "http://" + DirectUrl
+		}
+		parsedUrl, err = url.Parse(DirectUrl)
+		if err != nil {
+			fmt.Println("Plz check your url!")
+		}
 		schema := parsedUrl.Scheme
 		host := parsedUrl.Host
 		if strings.Contains(host, ":") {
@@ -29,11 +38,7 @@ func ProcessUrlToDiscover(DirectUrls []string) []map[string]interface{} {
 			path = ""
 		}
 		if port == "" {
-			if schema == "http" {
-				port = "80"
-			} else if schema == "https" {
-				port = "443"
-			}
+			port = common.ServiceToPortString[schema]
 		}
 		if path == "/" {
 			path = ""
@@ -47,7 +52,7 @@ func ProcessUrlToDiscover(DirectUrls []string) []map[string]interface{} {
 			"path":   path,
 			"url":    DirectUrl,
 		}
-
+		fmt.Println(result)
 		ForDiscoverResults = append(ForDiscoverResults, result)
 	}
 	return ForDiscoverResults

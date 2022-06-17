@@ -58,6 +58,7 @@ func log(l Level, detail string) {
 	} else {
 		fmt.Println(detail)
 	}
+	WriteLogFile(Clean(detail), common.RunningInfo.OutputFileName)
 	if l == LevelFatal {
 		os.Exit(0)
 	}
@@ -121,4 +122,18 @@ func Clean(str string) string {
 	const ansi = "[\u001B\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\u0007)|(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))"
 	var re = regexp.MustCompile(ansi)
 	return re.ReplaceAllString(str, "")
+}
+
+func WriteLogFile(result string, filename string) {
+	var text = []byte(result + "\n")
+	fl, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Printf("Open %s error, %v\n", filename, err)
+		return
+	}
+	_, err = fl.Write(text)
+	fl.Close()
+	if err != nil {
+		fmt.Printf("Write %s error, %v\n", filename, err)
+	}
 }

@@ -23,5 +23,5 @@ func main() {
 	pocv1.Poc()
 	poc.Poc()
 	nonweb.Service()
-	logger.Info(fmt.Sprintf("全部结束, 耗时: %s", time.Now().Sub(startTime)))
+	logger.Info(fmt.Sprintf("Task finish, consumption of time: %s", time.Now().Sub(startTime)))
 }

@@ -87,6 +87,6 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 
 	RunningInfo.PocSocks5Proxy = InputInfo.BruteSocks5Proxy
 
-	RunningInfo.NoNuclei = InputInfo.NoNuclei
+	RunningInfo.Nuclei = InputInfo.Nuclei
 	RunningInfo.BruteThread = InputInfo.BruteThread
 }

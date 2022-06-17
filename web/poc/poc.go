@@ -23,7 +23,7 @@ func filterWebTargets() (targets []string) {
 }
 
 func Poc() {
-	if common.RunningInfo.NoNuclei {
+	if !common.RunningInfo.Nuclei {
 		return
 	}
 	if common.RunningInfo.NoPoc {

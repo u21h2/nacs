@@ -58,6 +58,18 @@ func Service() {
 			logger.Info("[protocol] netbios " + info.Host + ":" + info.Port)
 			services.Findnet(info)
 			continue
+			//case "memcache":
+			//	logger.Info("[protocol] memcache " + info.Host + ":" + info.Port)
+			//	services.MemcachedScan(info)
+			//	continue
+			//case "mongo":
+			//	logger.Info("[protocol] mongo " + info.Host + ":" + info.Port)
+			//	services.MongodbScan(info)
+			//	continue
+			//case "psql":
+			//	logger.Info("[protocol] psql " + info.Host + ":" + info.Port)
+			//	services.PostgresScan(info)
+			//	continue
 		}
 		switch info.Port {
 		case "22":

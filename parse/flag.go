@@ -45,7 +45,7 @@ func Flag(Info *common.InputInfoStruct) {
 	flag.IntVar(&Info.PocTimeout, "poctimeout", 20, "poc timeout")
 	flag.StringVar(&Info.NucleiPocPath, "nucleipocpath", "pocs/nuclei/**", "Nuclei poc path") //  pocs/nuclei/**
 	flag.StringVar(&Info.FscanPocPath, "fscanpocpath", "pocs/xrayv1/", "Fscan poc path")      // pocs/fscan/**
-	flag.BoolVar(&Info.NoNuclei, "nonuclei", false, "no nuclei")
+	flag.BoolVar(&Info.Nuclei, "nonuclei", false, "no nuclei")
 
 	flag.StringVar(&Info.Command, "command", "whoami", "exec command (ssh)")
 	flag.StringVar(&Info.SSHKey, "sshkey", "", "sshkey file (id_rsa)")
@@ -62,7 +62,10 @@ func Flag(Info *common.InputInfoStruct) {
 
 	flag.StringVar(&Info.DirectUrl, "u", "", "url split by [,] i.e., http(s), ssh, ftp, ...")
 	flag.StringVar(&Info.DirectUrlFile, "uf", "", "url file")
-	flag.BoolVar(&Info.DirectUrlForce, "uforce", false, "always exploit")
+	flag.BoolVar(&Info.DirectUrlForce, "uforce", false, "always exploit for direct url")
+
+	flag.StringVar(&Info.FofaKey, "fofakey", "", "fofa key")
+	flag.StringVar(&Info.FofaSecret, "fofasecret", "", "fofa secret")
 
 	flag.Parse()
 }
