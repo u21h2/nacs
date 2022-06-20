@@ -30,11 +30,8 @@
 # 使用方法
 快速使用
 ```shell
-./nacs -h IP或IP段
-./nacs -hf IP或IP段的文件
-输出功能没实现 先这样重定向一下
-./nacs -hf ip.txt -nonuclei -nobrute > output_withcolor.txt
-cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" > output_withoutcolor.txt
+./nacs -h IP或IP段 -o result1.txt
+./nacs -hf IP或IP段的文件 -o result2.txt
 ```
 常用参数
 ```shell
@@ -42,7 +39,7 @@ cat output_withcolor.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" 
 -xraypocpath xray(v1)的poc路径 格式为"web/pocs/"
 -nucleipocpath nuclei的poc路径 格式为"xxx/pocs/**"
 -nopoc 不进行poc探测, 包括xray与nuclei
--nonuclei [强烈建议加上此参数!!!]不使用nuclei进行探测, 因为nuclei的poc太多了
+-nuclei [不强烈建议加上此参数,因为nuclei的poc太多了]使用nuclei进行探测,
 -nobrute 不进行爆破
 -pocdebug poc探测时打印全部信息
 -brutedebug 爆破时打印全部信息
