@@ -45,7 +45,7 @@ func Flag(Info *common.InputInfoStruct) {
 	flag.IntVar(&Info.PocTimeout, "poctimeout", 20, "poc timeout")
 	flag.StringVar(&Info.NucleiPocPath, "nucleipocpath", "pocs/nuclei/**", "Nuclei poc path") //  pocs/nuclei/**
 	flag.StringVar(&Info.FscanPocPath, "fscanpocpath", "pocs/xrayv1/", "Fscan poc path")      // pocs/fscan/**
-	flag.BoolVar(&Info.Nuclei, "nonuclei", false, "no nuclei")
+	flag.BoolVar(&Info.Nuclei, "nuclei", false, "no nuclei")
 
 	flag.StringVar(&Info.Command, "command", "whoami", "exec command (ssh)")
 	flag.StringVar(&Info.SSHKey, "sshkey", "", "sshkey file (id_rsa)")
