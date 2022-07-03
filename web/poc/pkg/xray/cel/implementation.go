@@ -15,15 +15,16 @@ import (
 	"time"
 	"unicode"
 
+	"nacs/web/poc/internal/common/errors"
+	"nacs/web/poc/pkg/xray/requests"
+	"nacs/web/poc/pkg/xray/structs"
+	"nacs/web/poc/utils"
+
 	"github.com/dlclark/regexp2"
 	"github.com/google/cel-go/cel"
 	"github.com/google/cel-go/common/types"
 	"github.com/google/cel-go/common/types/ref"
 	"github.com/google/cel-go/interpreter/functions"
-	"nacs/web/poc/internal/common/errors"
-	"nacs/web/poc/pkg/xray/requests"
-	"nacs/web/poc/pkg/xray/structs"
-	"nacs/web/poc/utils"
 )
 
 var (
@@ -484,9 +485,11 @@ func xrayNewReverse() (reverse *structs.Reverse) {
 
 	switch common.RunningInfo.ReversePlatformType {
 	case structs.ReverseType_Ceye:
+		fmt.Println("Ceye!!!")
 		sub := utils.RandomStr(utils.AsciiLowercaseAndDigits, 8)
 		urlStr = fmt.Sprintf("http://%s.%s/", sub, common.RunningInfo.CeyeDomain)
 	case structs.ReverseType_DnslogCN:
+		fmt.Println("DNSLOG!!!")
 		dnslogCnRequest := common.RunningInfo.DnslogCNGetDomainRequest
 		resp, _, err := requests.DoRequest(dnslogCnRequest, false)
 		if err != nil {

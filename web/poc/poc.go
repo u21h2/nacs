@@ -8,7 +8,6 @@ import (
 	"nacs/web/poc/internal/common/output"
 	nuclei_parse "nacs/web/poc/pkg/nuclei/parse"
 	xray_requests "nacs/web/poc/pkg/xray/requests"
-	xray_structs "nacs/web/poc/pkg/xray/structs"
 	"time"
 )
 
@@ -37,9 +36,10 @@ func Poc() {
 	var xrayProxy = ""
 
 	// 初始化dnslog平台
-	if common.RunningInfo.ReversePlatformType != xray_structs.ReverseType_Ceye {
-		logger.Warning("No Ceye api, use dnslog.cn")
-	}
+	//structs.InitReversePlatform(common.RunningInfo.CeyeApi, common.RunningInfo.CeyeDomain, time.Duration(common.RunningInfo.PocTimeout)*time.Second)
+	//if common.RunningInfo.ReversePlatformType != xray_structs.ReverseType_Ceye {
+	//	logger.Warning("No Ceye api, use dnslog.cn")
+	//}
 
 	// 初始化http客户端
 	xray_requests.InitHttpClient(common.RunningInfo.PocThread, xrayProxy, time.Duration(common.RunningInfo.PocTimeout)*time.Second)

@@ -47,6 +47,8 @@ func Flag(Info *common.InputInfoStruct) {
 	flag.StringVar(&Info.FscanPocPath, "fscanpocpath", "pocs/xrayv1/", "Fscan poc path")      // pocs/fscan/**
 	flag.BoolVar(&Info.Nuclei, "nuclei", false, "no nuclei")
 
+	flag.BoolVar(&Info.NoReverse, "noreverse", false, "no reverse platform")
+
 	flag.StringVar(&Info.Command, "command", "whoami", "exec command (ssh)")
 	flag.StringVar(&Info.SSHKey, "sshkey", "", "sshkey file (id_rsa)")
 	flag.BoolVar(&Info.BruteDebug, "brutedebug", false, "print failed attempts")

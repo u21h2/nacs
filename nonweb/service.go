@@ -30,7 +30,7 @@ func Service() {
 			logger.Info("[protocol] smb-CVE-2020-0796 " + info.Host + ":" + info.Port)
 			services.SmbGhostScan(info)
 			logger.Info("[protocol] smb-17010 " + info.Host + ":" + info.Port)
-			services.MS17010Scan(info)
+			services.MS17010(info)
 			logger.Info("[protocol] smb-brute " + info.Host + ":" + info.Port)
 			services.SmbScan(info)
 			continue
@@ -84,7 +84,7 @@ func Service() {
 			logger.Info("[port] smb-CVE-2020-0796 " + info.Host + ":" + info.Port)
 			services.SmbGhostScan(info)
 			logger.Info("[port] smb-17010 " + info.Host + ":" + info.Port)
-			services.MS17010Scan(info)
+			services.MS17010(info)
 			logger.Info("[port] smb-brute " + info.Host + ":" + info.Port)
 			services.SmbScan(info)
 			continue

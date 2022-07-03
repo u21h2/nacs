@@ -89,4 +89,6 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 
 	RunningInfo.Nuclei = InputInfo.Nuclei
 	RunningInfo.BruteThread = InputInfo.BruteThread
+
+	RunningInfo.NoReverse = InputInfo.NoReverse
 }

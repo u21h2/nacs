@@ -4,14 +4,20 @@ go 1.18
 
 require (
 	github.com/bluele/gcache v0.0.2
+	github.com/denisenkom/go-mssqldb v0.12.2
 	github.com/dlclark/regexp2 v1.4.0
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/cel-go v0.6.0
 	github.com/gookit/color v1.5.0
+	github.com/jlaffaye/ftp v0.0.0-20190624084859-c1312a7102bf
+	github.com/lib/pq v1.10.6
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/panjf2000/ants v1.3.0
 	github.com/projectdiscovery/nuclei/v2 v2.7.1
 	github.com/remeh/sizedwaitgroup v1.0.0
+	github.com/satori/go.uuid v1.2.0
+	github.com/sijms/go-ora/v2 v2.4.26
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/stacktitan/smb v0.0.0-20190531122847-da9a425dceb8
 	github.com/tomatome/grdp v0.0.0-20211231062539-be8adab7eaf3
@@ -24,7 +30,6 @@ require (
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd
 	google.golang.org/protobuf v1.28.0
 	gopkg.in/yaml.v2 v2.4.0
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 )
 
 require (
@@ -46,7 +51,6 @@ require (
 	github.com/caddyserver/certmagic v0.16.1 // indirect
 	github.com/cnf/structhash v0.0.0-20201127153200-e1b16c1ebc08 // indirect
 	github.com/corpix/uarand v0.1.1 // indirect
-	github.com/denisenkom/go-mssqldb v0.12.2 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/dsnet/compress v0.0.1 // indirect
@@ -56,7 +60,6 @@ require (
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.0 // indirect
 	github.com/go-rod/rod v0.106.6 // indirect
-	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goburrow/cache v0.1.4 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
@@ -70,9 +73,7 @@ require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/h2non/filetype v1.1.3 // indirect
-	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
-	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-retryablehttp v0.6.8 // indirect
 	github.com/hashicorp/go-version v1.4.0 // indirect
 	github.com/huin/asn1ber v0.0.0-20120622192748-af09f62e6358 // indirect
@@ -80,7 +81,6 @@ require (
 	github.com/icodeface/tls v0.0.0-20190904083142-17aec93c60e5 // indirect
 	github.com/itchyny/gojq v0.12.7 // indirect
 	github.com/itchyny/timefmt-go v0.1.3 // indirect
-	github.com/jlaffaye/ftp v0.0.0-20220524001917-dfa1e758f3af // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/karlseguin/ccache v2.0.3+incompatible // indirect
@@ -89,7 +89,6 @@ require (
 	github.com/klauspost/compress v1.15.2 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.11 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
-	github.com/lib/pq v1.10.6 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/lor00x/goldap v0.0.0-20180618054307-a546dffdd1a3 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
@@ -130,7 +129,6 @@ require (
 	github.com/rs/xid v1.4.0 // indirect
 	github.com/segmentio/ksuid v1.0.4 // indirect
 	github.com/shirou/gopsutil/v3 v3.22.4 // indirect
-	github.com/sijms/go-ora/v2 v2.4.21 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tklauser/go-sysconf v0.3.10 // indirect
@@ -167,6 +165,7 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
 	gopkg.in/corvus-ch/zbase32.v1 v1.0.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	moul.io/http2curl v1.0.0 // indirect
 )
 

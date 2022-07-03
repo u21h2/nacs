@@ -136,6 +136,7 @@ func MS17010Scan(info nonweb_utils.HostInfo) error {
 		//} else{fmt.Printf("\033[33m%s\tMS17-010\t(%s)\033[0m\n", ip, os)}
 		result := fmt.Sprintf("[+] %s\tMS17-010\t(%s)", ip, os)
 		logger.Success(result)
+		MS17010EXP(info)
 		// detect present of DOUBLEPULSAR SMB implant
 		trans2SessionSetupRequest[28] = treeID[0]
 		trans2SessionSetupRequest[29] = treeID[1]

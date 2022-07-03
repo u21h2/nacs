@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var version = "0.0.2"
+var version = "0.0.3"
 
 type InputInfoStruct struct {
 	Host           string
@@ -65,6 +65,8 @@ type InputInfoStruct struct {
 
 	FofaKey    string
 	FofaSecret string
+
+	NoReverse bool
 }
 type FileInfoStruct struct {
 }
@@ -130,6 +132,8 @@ type RunningInfoStruct struct {
 
 	FofaKey    string
 	FofaSecret string
+
+	NoReverse bool
 }
 
 var InputInfo InputInfoStruct
@@ -147,7 +151,7 @@ var DefaultPorts = []int{21, 22, 25, 53, 69, 79, 80, 81, 82, 83, 84, 85, 86, 87,
 var DefaultHeader = map[string]string{
 	"Accept-Language": "zh,zh-TW;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6",
 	"User-agent":      "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1468.0 Safari/537.36",
-	"Cookie":          "rememberMe=int",
+	"Cookie":          "rememberMe=True",
 }
 
 var DiscoverResultStruct = map[string]interface{}{
@@ -187,7 +191,7 @@ var Userdict = map[string][]string{
 	"oracle":     {"sys", "system", "admin", "test", "web", "orcl"},
 }
 
-var Passwords = []string{"123456", "admin", "admin123", "root", "", "pass123", "pass@123", "password", "123123", "654321", "111111", "123", "1", "admin@123",
+var Passwords = []string{"123456", "admin", "admin123", "root", "root123", "", "pass123", "pass@123", "password", "123123", "654321", "111111", "123", "1", "admin@123",
 	"Admin@123", "admin123!@#", "{user}", "{user}1", "{user}111", "{user}123", "{user}@123", "{user}_123", "{user}#123", "{user}@111", "{user}@2019", "{user}@123#4",
 	"P@ssw0rd!", "P@ssw0rd", "Passw0rd", "qwe123", "12345678", "test", "test123", "123qwe", "123qwe!@#", "123456789", "123321", "666666", "a123456.", "123456~a",
 	"123456!a", "000000", "1234567890", "8888888", "888888", "88888888", "!QAZ2wsx", "1qaz2wsx", "abc123", "abc123456", "1qaz@WSX", "a11111", "a12345", "Aa1234",

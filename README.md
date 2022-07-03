@@ -1,53 +1,91 @@
-# nacs
-全功能内网扫描器
+# nacs 事件驱动的扫描器
+
+[[中文 Readme]](https://github.com/u21h2/nacs/README.md)
+|
+[[English Readme]](https://github.com/u21h2/nacs/README_EN.md)
+
+
 <img src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod">
-<a href="https://github.com/u2h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total">
+<a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/badge/nacs-0.0.3-ff69b4"></a>
+<a href="https://github.com/u21h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total"></a>
+<a href="https://github.com/u21h2/nacs"><img src="https://img.shields.io/github/forks/u21h2/nacs"></a>
 
-
-# 功能
+## ✨ 功能
 - 探活
 - 服务扫描(常规&非常规端口)
 - poc探测(xray&nuclei格式)
 - 数据库等弱口令爆破
 - 内网常见漏洞利用
 
-# 利用过程(部分未实现)
+
+## ⭐️ 亮点
+- 常见组件及常见HTTP请求头的log4j漏洞检测
+  ![image](utils/3.png)
+- 非常规端口的服务扫描和利用(比如2222端口的ssh等等)
+- 识别为公网IP时, 从fofa检索可用的资产作为扫描的补充(正在写)
+- 自动识别简单web页面的输入框，用于弱口令爆破及log4j的检测(正在写)
+
+
+# 利用过程
     环境配置
-        弱口令配置、要写入的公钥、反弹的地址、DNSLog的地址等
+        弱口令配置、要写入的公钥、反弹的地址、ceye的API等等
     探活
         icmp ping
     资产初筛
-        确定哪个端口对应哪种服务，尤其注意非常规端口
-    漏洞打点
+        确定哪个端口对应哪种服务，尤其是非常规端口
+    漏洞打点(根据指纹信息发送到相应的模块)
         可以RCE的非web服务 进行探测或者利用(redis、永恒之蓝等)
-        web服务 扫poc
+        web服务 扫poc 如log4j
         非web服务 未授权及爆破
-        web服务 自动爆破登录
+        web服务 自动爆破登录 (未实现)
         重点服务 OA、VPN、Weblogic、蜜罐等
-![image](utils/main.png)
-![image](utils/url.png)
 
-# 使用方法
-快速使用
-```shell
-./nacs -h IP或IP段 -o result1.txt
-./nacs -hf IP或IP段的文件 -o result2.txt
+
+
+## 使用方法
+
+### 快速使用
 ```
-常用参数
-```shell
+sudo ./nacs -h IP或IP段 -o result.txt
+sudo ./nacs -hf IP或IP段的文件 -o result.txt
+sudo ./nacs -u url(支持http、ssh、ftp、smb等) -o result.txt
+sudo ./nacs -uf url文件 -o result.txt
+```
+
+### 示例
+- (1) 添加目标IP: 对10.15.196.135机器进行扫描, 手动添加密码, 并关闭反连平台的测试(即不测试log4j等)
+    ```
+    sudo ./nacs -h 10.15.196.135 -passwordadd "xxx,xxx" -noreverse
+    ```
+    ![image](utils/1.png)
+    可见发现了nacos的权限绕过漏洞，以及各服务爆破成功
+
+- (2) 直接添加目标url: 对10.211.55.7的ssh端口进行爆破,添加用户名密码均为test,爆破成功后执行ifconfig;并对某靶场url尝试log4j漏洞
+  ```
+  sudo ./nacs -u "ssh://10.211.55.7:22,http://123.58.224.8:13099" -usernameadd test -passwordadd test -command ifconfig
+  ```
+  ![image](utils/2.png)
+  可见两个log4j的poc都检测成功了,注入点在请求头的X-Api-Version字段；ssh爆破也成功了
+    
+### 常用参数
+```
+-o 指定输出的日志文件
 -np 不探活, 直接扫端口
--xraypocpath xray(v1)的poc路径 格式为"web/pocs/"
+-po 只使用这些端口
+-pa 添加这些端口
+-fscanpocpath fscan的poc路径 格式为"web/pocs/"
 -nucleipocpath nuclei的poc路径 格式为"xxx/pocs/**"
 -nopoc 不进行poc探测, 包括xray与nuclei
--nuclei [不强烈建议加上此参数,因为nuclei的poc太多了]使用nuclei进行探测,
+-nuclei 使用nuclei进行探测(不强烈建议加上此参数,因为nuclei的poc太多了)
 -nobrute 不进行爆破
 -pocdebug poc探测时打印全部信息
 -brutedebug 爆破时打印全部信息
 -useradd 爆破时添加用户名
 -passwordadd 爆破时添加密码
+-noreverse 不使用反连平台
 ```
 
-# 借鉴
+## 借鉴
 借鉴参考了下列优秀作品
 - [x] fscan https://github.com/shadow1ng/fscan 专注于内网 web和服务的poc 服务的爆破
 - [x] kscan https://github.com/lcvvvv/kscan 专注于信息收集 能探测到非常规端口开的服务 比如2222的ssh
@@ -68,10 +106,8 @@
 - [x] SpringExploit https://github.com/SummerSec/SpringExploit
 - [ ] fscanpoc补充 https://github.com/chaosec2021/fscan-POC
 
+
 # TODO 动态更新
-- [ ] 双语readme
-- [x] 支持-u命令来支持扫描需要url才能访问的资产,不仅支持HTTP(S),同时支持SSH等
-- [x] 完善日志输出功能(目前几乎没实现输出到文件的功能)
 - [ ] 从fofa中自动扫描搜集资产补充到扫描结果
 - [ ] 支持自定义header来进行host碰撞等
 - [ ] 完善代理功能
@@ -80,9 +116,7 @@
 - [ ] 弱口令自动生成, 根据前缀、后缀、已获得信息等来动态补充爆破的字典
 - [ ] 常见Spring漏洞的自动利用
 - [ ] 简单的web登录服务自动探测接口及参数实现爆破
-- [ ] ... 
+- [ ] ...
 
-三五天写出来的, 肯定存在大量bug, 但目前基本使用是没问题的, 师傅们多多提建议!
-    
 # Stargazers over time
 [![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)
