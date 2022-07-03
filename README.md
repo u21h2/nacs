@@ -127,4 +127,7 @@ sudo ./nacs -uf url文件 -o result.txt
 
 
 # Stargazers over time
+## 访问
+![Visitor Count](https://profile-counter.glitch.me/u21h2-nacs/count.svg)
+## Star
 [![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)

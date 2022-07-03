@@ -125,4 +125,7 @@ Do not scan unauthorized targets.
 If you have any illegal behavior in the process of using this tool, you shall bear the corresponding consequences by yourself, and we will not bear any legal and joint responsibility.
 
 # Stargazers over time
+## Visit
+![Visitor Count](https://profile-counter.glitch.me/u21h2-nacs/count.svg)
+## Star
 [![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)
