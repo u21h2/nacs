@@ -1,4 +1,4 @@
-# nacs: event-driven penetest scanner
+# nacs: event-driven pentest scanner
 
 [[中文 Readme]](https://github.com/u21h2/nacs/blob/main/README.md)
 |
