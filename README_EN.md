@@ -1,11 +1,11 @@
-# nacs: event-driven penetestg scanner
+# nacs: event-driven penetest scanner
 
-[[中文 Readme]](https://github.com/u21h2/nacs/README.md)
+[[中文 Readme]](https://github.com/u21h2/nacs/blob/main/README.md)
 |
-[[English Readme]](https://github.com/u21h2/nacs/README_EN.md)
+[[English Readme]](https://github.com/u21h2/nacs/blob/main/README_EN.md)
 
 
-<img src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod">
+<a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod"></a>
 <a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/badge/nacs-0.0.3-ff69b4"></a>
 <a href="https://github.com/u21h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total"></a>
 <a href="https://github.com/u21h2/nacs"><img src="https://img.shields.io/github/forks/u21h2/nacs"></a>
@@ -116,6 +116,13 @@ Inspired by the following excellent tools
 - [ ] Automatic exploitation of common Spring vulnerabilities
 - [ ] Simple web login service automatically detects interfaces and parameters to achieve blasting
 - [ ] ...
+
+# Disclaimer
+This tool is only for legally pentest activities.
+In order to avoid malicious use, all the POCs included in this project are theoretical judgments of vulnerabilities, there is no vulnerability exploitation process, and no real attacks or exploits will be launched on the target.
+When using this tool for detection, you should ensure that the behavior complies with local laws and regulations and has obtained sufficient authorization.
+Do not scan unauthorized targets.
+If you have any illegal behavior in the process of using this tool, you shall bear the corresponding consequences by yourself, and we will not bear any legal and joint responsibility.
 
 # Stargazers over time
 [![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)

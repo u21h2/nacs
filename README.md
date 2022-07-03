@@ -1,11 +1,11 @@
 # nacs 事件驱动的扫描器
 
-[[中文 Readme]](https://github.com/u21h2/nacs/README.md)
+[[中文 Readme]](https://github.com/u21h2/nacs/blob/main/README.md)
 |
-[[English Readme]](https://github.com/u21h2/nacs/README_EN.md)
+[[English Readme]](https://github.com/u21h2/nacs/blob/main/README_EN.md)
 
 
-<img src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod">
+<a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod"></a>
 <a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/badge/nacs-0.0.3-ff69b4"></a>
 <a href="https://github.com/u21h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total"></a>
 <a href="https://github.com/u21h2/nacs"><img src="https://img.shields.io/github/forks/u21h2/nacs"></a>
@@ -117,6 +117,14 @@ sudo ./nacs -uf url文件 -o result.txt
 - [ ] 常见Spring漏洞的自动利用
 - [ ] 简单的web登录服务自动探测接口及参数实现爆破
 - [ ] ...
+
+# 免责声明
+本工具仅面向合法授权的企业安全建设行为，如您需要测试本工具的可用性，请自行搭建靶机环境。
+为避免被恶意使用，本项目所有收录的poc均为漏洞的理论判断，不存在漏洞利用过程，不会对目标发起真实攻击和漏洞利用。
+在使用本工具进行检测时，您应确保该行为符合当地的法律法规，并且已经取得了足够的授权。请勿对非授权目标进行扫描。
+如您在使用本工具的过程中存在任何非法行为，您需自行承担相应后果，我们将不承担任何法律及连带责任。
+
+
 
 # Stargazers over time
 [![Stargazers over time](https://starchart.cc/u21h2/nacs.svg)](https://starchart.cc/u21h2/nacs)
