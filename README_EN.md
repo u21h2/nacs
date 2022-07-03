@@ -19,7 +19,7 @@
 
 
 ## ⭐️ Highlights
-- Log4j vulnerability detection of common components and common HTTP request headers
+- Log4j vulnerability detection of common components (such as spring) and common HTTP request headers
   ![image](utils/3.png)
 - Service scanning and utilization of unconventional ports (such as ssh on port 2222, etc.)
 - Retrieve available assets from fofa as a supplement (TODO)
