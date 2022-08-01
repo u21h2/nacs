@@ -103,6 +103,9 @@ type RunningInfoStruct struct {
 	DnslogCNGetDomainRequest *http.Request
 	DnslogCNGetRecordRequest *http.Request
 
+	XrayV1CeyeApi    string
+	XrayV1CeyeDomain string
+
 	NucleiPocPath  string
 	FscanPocPath   string
 	PocTimeout     int

@@ -146,7 +146,7 @@ func executePoc(oReq *http.Request, p *Poc) (bool, error, string) {
 		variableMap["response"] = resp
 		// 先判断响应页面是否匹配search规则
 		if rule.Search != "" {
-			result := doSearch(strings.TrimSpace(rule.Search), string(resp.Body))
+			result := doSearch(strings.TrimSpace(rule.Search), GetHeader(resp.Headers)+string(resp.Body))
 			if result != nil && len(result) > 0 { // 正则匹配成功
 				for k, v := range result {
 					variableMap[k] = v
@@ -230,6 +230,9 @@ func newReverse() *Reverse {
 	//}
 	if common.RunningInfo.NoReverse {
 		return &Reverse{}
+	}
+	if common.RunningInfo.XrayV1CeyeDomain != "" {
+		ceyeDomain = common.RunningInfo.XrayV1CeyeDomain
 	}
 	urlStr := fmt.Sprintf("http://%s.%s", sub, ceyeDomain)
 	//fmt.Println(urlStr)
@@ -446,7 +449,7 @@ func clustersend(oReq *http.Request, variableMap map[string]interface{}, req *Re
 	variableMap["response"] = resp
 	// 先判断响应页面是否匹配search规则
 	if rule.Search != "" {
-		result := doSearch(strings.TrimSpace(rule.Search), string(resp.Body))
+		result := doSearch(strings.TrimSpace(rule.Search), GetHeader(resp.Headers)+string(resp.Body))
 		if result != nil && len(result) > 0 { // 正则匹配成功
 			for k, v := range result {
 				variableMap[k] = v
@@ -525,3 +528,12 @@ func evalset1(env *cel.Env, variableMap map[string]interface{}, k string, expres
 //	}
 //	return ""
 //}
+
+func GetHeader(header map[string]string) (output string) {
+	for name, values := range header {
+		line := fmt.Sprintf("%s: %s\n", name, values)
+		output = output + line
+	}
+	output = output + "\r\n"
+	return
+}

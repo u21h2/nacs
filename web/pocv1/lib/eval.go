@@ -16,6 +16,7 @@ import (
 	"io"
 	"io/ioutil"
 	"math/rand"
+	"nacs/common"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -546,6 +547,9 @@ func reverseCheck(r *Reverse, timeout int64) bool {
 	}
 	time.Sleep(time.Second * time.Duration(timeout))
 	sub := strings.Split(r.Domain, ".")[0]
+	if common.RunningInfo.XrayV1CeyeApi != "" {
+		ceyeApi = common.RunningInfo.XrayV1CeyeApi
+	}
 	urlStr := fmt.Sprintf("http://api.ceye.io/v1/records?token=%s&type=dns&filter=%s", ceyeApi, sub)
 	//fmt.Println(urlStr)
 	req, _ := http.NewRequest("GET", urlStr, nil)

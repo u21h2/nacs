@@ -82,6 +82,8 @@ sudo ./nacs -uf "File of url(s)" -o result.txt
 -useradd add username when blasting
 -passwordadd add password when blasting
 -noreverse do not use reverse platform
+-ceyekey your own ceye token
+-ceyedomain your own ceye domain
 ```
 
 ## Reference

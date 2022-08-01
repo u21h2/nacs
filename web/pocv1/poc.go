@@ -59,8 +59,8 @@ func Execute(PocInfo poc_struct.PocInfoStruct) {
 func InitPocInfo(pocInfo *poc_struct.PocInfoStruct) {
 	pocInfo.Num = common.RunningInfo.PocRate
 	pocInfo.Timeout = int64(common.RunningInfo.PocTimeout)
-	pocInfo.ApiKey = common.RunningInfo.CeyeApi
-	pocInfo.CeyeDomain = common.RunningInfo.CeyeDomain
+	// pocInfo.ApiKey = common.RunningInfo.CeyeApi
+	// pocInfo.CeyeDomain = common.RunningInfo.CeyeDomain
 
 }
 

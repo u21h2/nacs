@@ -83,6 +83,8 @@ sudo ./nacs -uf url文件 -o result.txt
 -useradd 爆破时添加用户名
 -passwordadd 爆破时添加密码
 -noreverse 不使用反连平台
+-ceyekey 你自己的ceye token
+-ceyedomain 你自己的ceye domain
 ```
 
 ## 借鉴

@@ -59,7 +59,12 @@ func Parse(InputInfo *common.InputInfoStruct, RunningInfo *common.RunningInfoStr
 
 	RunningInfo.OutJson = InputInfo.OutJson
 
-	ParseReversePlatform(InputInfo.CeyeKey, InputInfo.CeyeDomain)
+	ParseReversePlatform(InputInfo.CeyeKey, InputInfo.CeyeDomain) // useless
+
+	if InputInfo.CeyeKey != "" {
+		RunningInfo.XrayV1CeyeApi = InputInfo.CeyeKey
+		RunningInfo.XrayV1CeyeDomain = InputInfo.CeyeDomain
+	}
 
 	RunningInfo.NoPoc = InputInfo.NoPoc
 	RunningInfo.NoBrute = InputInfo.NoBrute
