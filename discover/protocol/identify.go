@@ -148,6 +148,13 @@ func JudgeTcp(result map[string]interface{}, Args map[string]interface{}) bool {
 		}
 	}
 
+	if protocol == "jdwp" || runAll {
+		if judge.TcpJdwp(result, Args) {
+			printSuccess("TCP/JDWP", result)
+			return true
+		}
+	}
+
 	status := result["status"].(string)
 	if status == "open" && runAll {
 		printFailed("TCP/unknown", result)
