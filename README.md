@@ -6,7 +6,7 @@
 
 
 <a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/github/go-mod/go-version/u21h2/nacs?filename=go.mod"></a>
-<a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/badge/nacs-0.0.3-ff69b4"></a>
+<a href="https://github.com/u21h2/nacs"><img alt="Release" src="https://img.shields.io/badge/nacs-0.0.4-ff69b4"></a>
 <a href="https://github.com/u21h2/nacs/releases"><img src="https://img.shields.io/github/downloads/u21h2/nacs/total"></a>
 <a href="https://github.com/u21h2/nacs"><img src="https://img.shields.io/github/forks/u21h2/nacs"></a>
 
