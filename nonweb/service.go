@@ -19,7 +19,7 @@ func Service() {
 
 		switch discoverResult["protocol"].(string) {
 		case "ssh":
-			logger.Info("[protocol] ssh " + info.Host)
+			logger.Info("[protocol] ssh " + info.Host + ":" + info.Port)
 			services.SshScan(info)
 			continue
 		case "redis":
