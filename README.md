@@ -48,7 +48,7 @@
 ```
 sudo ./nacs -h IP或IP段 -o result.txt
 sudo ./nacs -hf IP或IP段的文件 -o result.txt
-sudo ./nacs -u url(支持http、ssh、ftp、smb等) -o result.txt
+sudo ./nacs -u url(支持http、ssh、ftp、smb等, 可以指定或者不指定) -o result.txt
 sudo ./nacs -uf url文件 -o result.txt
 ```
 
@@ -80,7 +80,7 @@ sudo ./nacs -uf url文件 -o result.txt
 -nobrute 不进行爆破
 -pocdebug poc探测时打印全部信息
 -brutedebug 爆破时打印全部信息
--useradd 爆破时添加用户名
+-usernameadd 爆破时添加用户名
 -passwordadd 爆破时添加密码
 -noreverse 不使用反连平台
 -ceyekey 你自己的ceye token

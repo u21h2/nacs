@@ -79,7 +79,7 @@ sudo ./nacs -uf "File of url(s)" -o result.txt
 -nobrute do not blast
 -pocdebug print all information when poc probes
 -brutedebug print all information when blasting
--useradd add username when blasting
+-usernameadd add username when blasting
 -passwordadd add password when blasting
 -noreverse do not use reverse platform
 -ceyekey your own ceye token
